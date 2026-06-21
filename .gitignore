@@ -1,0 +1,5 @@
+# ignorar arquivos de execução
+bin/
+
+#ignorar arquivos de configuração
+.vscode/
