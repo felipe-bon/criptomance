@@ -2,6 +2,7 @@ package geneticAlgorithm;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class CryptoProblem {
 
@@ -31,5 +32,13 @@ public class CryptoProblem {
                 currentIndex++;
             }
         }
+    }
+
+    public String getLetterSequence(){
+        return letterToIndexMap.entrySet()
+            .stream()
+            .sorted(Map.Entry.comparingByValue())
+            .map(e -> e.getKey() + " ")
+            .collect(Collectors.joining(" "));
     }
 }
