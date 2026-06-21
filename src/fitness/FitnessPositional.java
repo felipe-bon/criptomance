@@ -7,4 +7,10 @@ public class FitnessPositional implements FitnessStrategy{
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'calculateFitness'");
   }
+
+  @Override
+  public String getLettersSequenc() {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'getLettersSequenc'");
+  }
 }

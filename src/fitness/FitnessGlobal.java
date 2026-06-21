@@ -47,4 +47,9 @@ public class FitnessGlobal implements FitnessStrategy {
 
         return number;
     }
+
+    @Override
+    public String getLettersSequenc() {
+      return currentProblem.getLetterSequence();
+    }
 }
