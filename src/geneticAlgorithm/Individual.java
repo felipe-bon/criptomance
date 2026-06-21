@@ -1,6 +1,7 @@
 package geneticAlgorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -68,4 +69,13 @@ public class Individual {
     this.chromosome[mutateGen2] = temp;
     return;
   }
+
+    @Override
+    public String toString() {
+        return String.format(
+            "Individual{fitness=%d, chromosome=%s}",
+            fitnessValue,
+            Arrays.toString(chromosome)
+        );
+    }
 }
