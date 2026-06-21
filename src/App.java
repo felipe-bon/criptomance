@@ -1,20 +1,18 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import crossover.CrossoverStrategy;
+import crossover.CyclicCrossover;
+import geneticAlgorithm.GenAlg;
+import parentSelection.ParentSelectionStrategy;
+import parentSelection.TournamentSelection;
 
 public class App {
     public static void main(String[] args) throws Exception {
         System.out.println("Iniciando sistema!");
 
-        ArrayList<Individual> population = new ArrayList<>();
+        CrossoverStrategy crossoverMethod = new CyclicCrossover();
+        ParentSelectionStrategy selectionParentMethod = new TournamentSelection();
 
-        for(int i = 0; i < 10; i++){
-            Individual individual = new Individual(0.2);
-            population.add(individual);
-        }
-
-        for(int i = 0; i < population.size(); i++){
-            System.out.println(Arrays.toString(population.get(i).getChromosome()));
-        }
+        GenAlg algoritmoGenetico = new GenAlg(20, 100, crossoverMethod, selectionParentMethod);
+        algoritmoGenetico.getPopulation();
 
         System.out.println("Encerrando sistema!");
     }

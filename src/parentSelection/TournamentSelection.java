@@ -2,7 +2,7 @@ package parentSelection;
 
 import geneticAlgorithm.Individual;
 
-public class tournamentSelection implements ParentSelectionStrategy{
+public class TournamentSelection implements ParentSelectionStrategy{
 
   @Override
   public Individual[] selectParents(Individual[] population) {

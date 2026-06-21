@@ -2,7 +2,7 @@ package parentSelection;
 
 import geneticAlgorithm.Individual;
 
-public class rouletteSelection implements ParentSelectionStrategy{
+public class RouletteSelection implements ParentSelectionStrategy{
 
   @Override
   public Individual[] selectParents(Individual[] population) {
