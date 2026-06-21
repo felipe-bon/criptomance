@@ -17,7 +17,7 @@ public class Individual {
   public Individual(int p_mutation) {
 
     this.p_mutation = p_mutation;
-    this.possibleGeneValues = new ArrayList<>(List.of(-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+    this.possibleGeneValues = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.generateChromosome();
   }
 
@@ -25,7 +25,7 @@ public class Individual {
   public Individual(int p_mutation, int[] chromosome){
 
     this.p_mutation = p_mutation;
-    this.possibleGeneValues = new ArrayList<>(List.of(-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+    this.possibleGeneValues = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.chromosome = chromosome;
     this.mutate();
   }
