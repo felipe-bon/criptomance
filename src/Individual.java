@@ -4,24 +4,35 @@ import java.util.Random;
 
 public class Individual {
 
-  private int c_size = 10;
-  private double p_mutation;
+  private static final int CHROMOSOME_SIZE = 10;
+  private int[] chromosome = new int[CHROMOSOME_SIZE];
+  private int p_mutation;
   private ArrayList<Integer> possibleGeneValues;
-  private int[] chromosome = new int[c_size];
   private int fitnessValue;
-  private int crossoverType = 0;
+  Random gerador;
+  // private int crossoverType = 0;
 
-  public Individual(double p_mutation) {
+  // individuo gerado para população inicial
+  public Individual(int p_mutation) {
+    this.gerador = new Random();
+
     this.p_mutation = p_mutation;
     this.possibleGeneValues = new ArrayList<>(List.of(-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.generateChromosome();
   }
 
-  private void generateChromosome(){
-    
-    Random gerador = new Random();
+  // individuo resultado de um crossover
+  public Individual(int p_mutation, int[] chromosome){
+    this.gerador = new Random();
 
-    for(int i = 0; i < this.c_size; i++){
+    this.p_mutation = p_mutation;
+    this.possibleGeneValues = new ArrayList<>(List.of(-2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
+    this.chromosome = chromosome;
+    this.mutate();
+  }
+
+  private void generateChromosome(){
+    for(int i = 0; i < CHROMOSOME_SIZE; i++){
       int pos = gerador.nextInt(0, this.possibleGeneValues.size());
       this.chromosome[i] = possibleGeneValues.get(pos);
       possibleGeneValues.remove(pos);
@@ -33,7 +44,7 @@ public class Individual {
   }
 
   public int getChromosomeSize(){
-    return c_size;
+    return CHROMOSOME_SIZE;
   }
 
   public int getFitnessValue(){
@@ -45,18 +56,18 @@ public class Individual {
   }
 
   private void mutate(){
+
+    boolean isMutate = (p_mutation >= gerador.nextInt(0, 100)); 
+
+    if(!isMutate) return;
+
+    int mutateGen1 = gerador.nextInt(0, CHROMOSOME_SIZE);
+    int mutateGen2 = gerador.nextInt(0, CHROMOSOME_SIZE);
+
+    int temp = this.chromosome[mutateGen1];
+    
+    this.chromosome[mutateGen1] = this.chromosome[mutateGen2];
+    this.chromosome[mutateGen2] = temp;
     return;
   }
-
-  // TODO
-  // private Individual[] crossover(Individual parent){
-
-  //   if (this.crossoverType == 0) {
-
-
-      
-  //   }
-
-  //   return suns;
-  // }
 }
