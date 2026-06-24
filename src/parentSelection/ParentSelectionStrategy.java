@@ -1,7 +1,9 @@
 package parentSelection;
 
+import java.util.ArrayList;
+
 import geneticAlgorithm.Individual;
 
 public interface ParentSelectionStrategy {
-  Individual[] selectParents(Individual[] population);
+  ArrayList<Individual> selectParents(ArrayList<Individual> population, int numParents);
 }
