@@ -9,23 +9,23 @@ public class Individual {
 
   private static final int CHROMOSOME_SIZE = 10;
   private int[] chromosome = new int[CHROMOSOME_SIZE];
-  private int p_mutation;
+  private int mutationProbability;
   private ArrayList<Integer> possibleGeneValues;
   private int fitnessValue;
   // private int crossoverType = 0;
 
   // individuo gerado para população inicial
-  public Individual(int p_mutation) {
+  public Individual(int mutationProbability) {
 
-    this.p_mutation = p_mutation;
+    this.mutationProbability = mutationProbability;
     this.possibleGeneValues = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.generateChromosome();
   }
 
   // individuo resultado de um crossover
-  public Individual(int p_mutation, int[] chromosome){
+  public Individual(int mutationProbability, int[] chromosome){
 
-    this.p_mutation = p_mutation;
+    this.mutationProbability = mutationProbability;
     this.possibleGeneValues = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.chromosome = chromosome;
     this.mutate();
@@ -57,7 +57,7 @@ public class Individual {
 
   private void mutate(){
 
-    boolean isMutate = p_mutation >= ThreadLocalRandom.current().nextInt(0, 100);
+    boolean isMutate = mutationProbability >= ThreadLocalRandom.current().nextInt(0, 100);
 
     if(!isMutate) return;
 
@@ -68,6 +68,10 @@ public class Individual {
     this.chromosome[mutateGen1] = this.chromosome[mutateGen2];
     this.chromosome[mutateGen2] = temp;
     return;
+  }
+
+  public int getMutationProbability() {
+    return mutationProbability;
   }
 
     @Override
