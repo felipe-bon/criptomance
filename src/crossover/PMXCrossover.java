@@ -58,15 +58,8 @@ public class PMXCrossover implements CrossoverStrategy {
       child2Chromo[i] = candidato;
     }
 
-    // Instancia os novos indivíduos com o cromossomo gerado.
-    // NOTA: Para usar o construtor que você criou anteriormente, é necessário
-    // passar a taxa de mutação.
-    // Você precisará pegar essa taxa de alguma forma (ex: criando um getter no
-    // parent1 ou acessando a variável da sua Strategy).
-    int pMutation = 10; // Substitua pela sua variável real que gerencia a taxa de mutação
-
-    Individual filho1 = new Individual(pMutation, child1Chromo);
-    Individual filho2 = new Individual(pMutation, child2Chromo);
+    Individual filho1 = new Individual(parent1.getMutationProbability(), child1Chromo);
+    Individual filho2 = new Individual(parent2.getMutationProbability(), child2Chromo);
 
     return new Individual[] { filho1, filho2 };
   }
