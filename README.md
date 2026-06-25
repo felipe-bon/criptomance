@@ -9,12 +9,6 @@ Esse projeto é um algoritmo genético que resolve problemas de criptoaritmétic
 
 ### Seleção de pais
 - criar os methodos de seleção de pais da classe RouletteSelection
-- criar os methodos de seleção de pais da classe TournamentSelection
 
 ### Fitness
 - Implementar os métodos da calculo de fitness da classe FitnessPositional
-
-### Algoritmo Genético
-- metodo crossover
-- metodo Seleção de pais
-- reeinsercão de filhos
