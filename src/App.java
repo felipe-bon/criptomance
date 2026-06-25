@@ -11,6 +11,7 @@ import geneticAlgorithm.CryptoProblem;
 import geneticAlgorithm.GenAlg;
 import parentSelection.ParentSelectionStrategy;
 import parentSelection.TournamentSelection;
+import parentSelection.RouletteSelection;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -22,7 +23,8 @@ public class App {
         CryptoProblem currenProblem = new CryptoProblem("send", "more", "money");
 
         CrossoverStrategy crossoverMethod = new PMXCrossover();
-        ParentSelectionStrategy selectionParentMethod = new TournamentSelection();
+        // ParentSelectionStrategy selectionParentMethod = new TournamentSelection();
+        ParentSelectionStrategy selectionParentMethod = new RouletteSelection();
         FitnessStrategy fitnessMethod = new FitnessGlobal(currenProblem);
         ReintegrationStrategy reintegrationMethod = new SortededReintegration();
 
