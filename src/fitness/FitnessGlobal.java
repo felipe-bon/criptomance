@@ -49,7 +49,7 @@ public class FitnessGlobal implements FitnessStrategy {
     }
 
     @Override
-    public String getLettersSequenc() {
+    public String getLettersSequence() {
       return currentProblem.getLetterSequence();
     }
 }
