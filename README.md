@@ -6,6 +6,3 @@ Esse projeto é um algoritmo genético que resolve problemas de criptoaritmétic
 
 ### Crossover
 - Criar o método de crossover da classe CyclicCrossver
-
-### Fitness
-- Implementar os métodos da calculo de fitness da classe FitnessPositional
