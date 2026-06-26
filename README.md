@@ -8,4 +8,4 @@ Esse projeto é um algoritmo genético que resolve problemas de criptoaritmétic
 - Criar o método de crossover da classe CyclicCrossver
 
 ### Reintegração
-- Criar método de reinserção pura com elitismo
+- Criar método de reinserção pura com elitismo 
