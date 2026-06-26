@@ -112,7 +112,7 @@ public class GenAlg {
   }
 
   public String getLettersSequenc() {
-    return this.fitnessStrategy.getLettersSequenc();
+    return this.fitnessStrategy.getLettersSequence();
   }
 
   public ArrayList<Individual> getChildren() {
