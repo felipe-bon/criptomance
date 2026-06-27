@@ -14,18 +14,18 @@ import parentSelection.ParentSelectionStrategy;
 public class GenAlg {
 
   private int population_size;
-  private int p_mutation;
+  private float p_mutation;
   private CrossoverStrategy crossoverStrategy;
   private ParentSelectionStrategy parentSelectionStrategy;
   private FitnessStrategy fitnessStrategy;
   private ReintegrationStrategy reintegrationStrategy;
   private int maxGeneration = 100;
-  private int crossoverRate = 60; // em porcentagem
+  private float crossoverRate = 0.6f;
   private ArrayList<Individual> population;
   private ArrayList<Individual> parents;
   private ArrayList<Individual> children;
 
-  public GenAlg(int p_mutation, int population_size, int maxGeneration, int crossoverRate,
+  public GenAlg(float p_mutation, int population_size, int maxGeneration, float crossoverRate,
       CrossoverStrategy crossoverStrategy, ParentSelectionStrategy parentSelectionStrategy,
       FitnessStrategy fitnessStrategy, ReintegrationStrategy reintegrationStrategy) {
     this.crossoverStrategy = crossoverStrategy;
@@ -50,7 +50,9 @@ public class GenAlg {
 
   // TODO
   private void selectParent() {
-    this.parents = this.parentSelectionStrategy.selectParents(population, crossoverRate);
+
+    int numberOfParents = (int) (population_size * crossoverRate);
+    this.parents = this.parentSelectionStrategy.selectParents(population, numberOfParents);
     return;
   }
 
