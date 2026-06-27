@@ -9,12 +9,20 @@ import geneticAlgorithm.Individual;
 
 public class TournamentSelection implements ParentSelectionStrategy {
 
+  private int tourSize;
+
+  public TournamentSelection() {
+    // Parâmetro fixo exigido pela Etapa 1 do trabalho: torneio com tour de 3
+    this.tourSize = 3;
+  }
+
+  public TournamentSelection(int tourSize) {
+    this.tourSize = tourSize;
+  }
+
   @Override
   public ArrayList<Individual> selectParents(ArrayList<Individual> population, int numParents) {
     int populationSize = population.size();
-
-    // Parâmetro fixo exigido pela Etapa 1 do trabalho: torneio com tour de 3
-    int tourSize = 3;
 
     // Cria um fluxo paralelo que executará simultaneamente 'numParents' vezes
     ArrayList<Individual> parents = IntStream.range(0, numParents)
