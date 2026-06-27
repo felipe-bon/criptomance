@@ -80,6 +80,47 @@ public class Etapa3 {
             problemas, numeroDeTestes, 50, 250, false));
 
         // ==================================================================================================
+        // NOVAS VARIAÇÕES - BUSCANDO A "GENÉRICA SUPREMA" (Trocando operadores de base)
+        // Como o PMX e o Torneio foram os melhores para 1 problema, eles podem ter "overfitado". 
+        // Vamos testar os outros operadores para ver se são mais genéricos!
+        // ==================================================================================================
+
+        // V6: Posicional + Crossover Cíclico
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 06", "Posicional + Crossover Cíclico", 
+            0.35f, new TournamentSelection(5), new crossover.CyclicCrossover(), new PureElitismReintegration(0.10), 0.90f, 
+            problemas, numeroDeTestes, 50, 200, true));
+
+        // V7: Posicional + Seleção por Roleta
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 07", "Posicional + Seleção Roleta", 
+            0.35f, new parentSelection.RouletteSelection(), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
+            problemas, numeroDeTestes, 50, 200, true));
+
+        // V8: Posicional + Reinserção Ordenada
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 08", "Posicional + Reinserção Ordenada", 
+            0.35f, new TournamentSelection(5), new PMXCrossover(), new Reintegration.SortededReintegration(), 0.90f, 
+            problemas, numeroDeTestes, 50, 200, true));
+
+        // V9: O Oposto da Base (Posicional + Roleta + Cíclico + Ordenada)
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 09", "Posicional + Roleta + Cíclico + Ordenada", 
+            0.35f, new parentSelection.RouletteSelection(), new crossover.CyclicCrossover(), new Reintegration.SortededReintegration(), 0.90f, 
+            problemas, numeroDeTestes, 50, 200, true));
+
+        // V10: Cíclico + Mutação Extrema (Para quebrar bloqueios)
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 10", "Posicional + Cíclico + TM:50%", 
+            0.50f, new TournamentSelection(3), new crossover.CyclicCrossover(), new PureElitismReintegration(0.10), 0.90f, 
+            problemas, numeroDeTestes, 50, 200, true));
+
+        // V11: Retorno ao Global + Roleta
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 11", "Global + Roleta + PMX", 
+            0.35f, new parentSelection.RouletteSelection(), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
+            problemas, numeroDeTestes, 50, 200, false));
+
+        // V12: O Grande Teste Genérico (Pop e Torneio balanceados)
+        resultados.add(executarExperimentoMultiplosProblemas("Variacao 12", "Posicional + Pop:150, Tor:3, Cíclico", 
+            0.35f, new TournamentSelection(3), new crossover.CyclicCrossover(), new PureElitismReintegration(0.15), 0.85f, 
+            problemas, numeroDeTestes, 60, 150, true));
+
+        // ==================================================================================================
         // APRESENTAÇÃO DOS RESULTADOS
         // ==================================================================================================
         
