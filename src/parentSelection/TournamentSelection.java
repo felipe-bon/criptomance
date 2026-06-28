@@ -24,15 +24,14 @@ public class TournamentSelection implements ParentSelectionStrategy {
   public ArrayList<Individual> selectParents(ArrayList<Individual> population, int numParents) {
     int populationSize = population.size();
 
-    // Cria um fluxo paralelo que executará simultaneamente 'numParents' vezes
+
     ArrayList<Individual> parents = IntStream.range(0, numParents)
-        .parallel() // Ativa o processamento em múltiplas threads
+        .parallel() 
         .mapToObj(i -> {
           Individual bestInTour = null;
 
-          // Lógica do Torneio (executada de forma isolada em cada thread)
           for (int j = 0; j < tourSize; j++) {
-            // ThreadLocalRandom é altamente eficiente e seguro para paralelismo
+            
             int randomIndex = ThreadLocalRandom.current().nextInt(populationSize);
             Individual candidate = population.get(randomIndex);
 
@@ -43,7 +42,6 @@ public class TournamentSelection implements ParentSelectionStrategy {
             }
           }
 
-          // Retorna o vencedor do torneio desta thread específica
           return bestInTour;
         })
         // Coleta todos os vencedores gerados paralelamente e os agrupa em um ArrayList

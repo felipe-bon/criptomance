@@ -80,23 +80,23 @@ public class Etapa2 {
             0.2f, new TournamentSelection(3), new PMXCrossover(), new PureElitismReintegration(0.3), 0.7f, 
             problemaAtual, numeroDeTestes, 50, 100));
 
-        // V8: Combo (Pressão e Diversidade)
+        // V8: Pressão Aumentada e Diversidade Aumentada
         resultados.add(executarExperimento("Variacao 08", "Pop:120, Tor:5, TM:25%", 
             0.25f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.2), 0.8f, 
             problemaAtual, numeroDeTestes, 50, 120));
 
-        // V9: Combo (Convergência Longa)
+        // V9: Mais Gerações e Menor Pressão Seletiva
         resultados.add(executarExperimento("Variacao 09", "Pop:80, Gen:80", 
             0.2f, new TournamentSelection(3), new PMXCrossover(), new PureElitismReintegration(0.2), 0.8f, 
             problemaAtual, numeroDeTestes, 80, 80));
 
-        // V10: Combo Supremo
+        // V10: Mais Pressão Seletiva e Aumento moderado de Gerações
         resultados.add(executarExperimento("Variacao 10", "Pop:120, Gen:60, Tor:5, TM:25%, Elit:15%", 
             0.25f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemaAtual, numeroDeTestes, 60, 120));
 
         // ==================================================================================================
-        // VARIAÇÕES 11 a 20 (Focadas nos aprendizados empíricos - buscando > 90% de convergência)
+        // VARIAÇÕES 11 a 20 (variações usando os resultado anteriores)
         // ==================================================================================================
 
         // V11: Escalando População e Mutação
@@ -104,32 +104,32 @@ public class Etapa2 {
             0.30f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemaAtual, numeroDeTestes, 60, 150));
 
-        // V12: Escalando o "Combo Supremo (V10)"
+        // V12: aumento gradual da população e gerações da V10
         resultados.add(executarExperimento("Variacao 12", "Pop:160, Gen:70, Tor:5, TM:25%, Elit:15%", 
             0.25f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemaAtual, numeroDeTestes, 70, 160));
 
-        // V13: Gigante Rápido (População massiva, gerações curtas)
+        // V13: População massiva, gerações curtas
         resultados.add(executarExperimento("Variacao 13", "Pop:200, Gen:50, Tor:7, TM:35%, Elit:10%", 
             0.35f, new TournamentSelection(7), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemaAtual, numeroDeTestes, 50, 200));
 
-        // V14: Mais tempo de busca com Elitismo conservador
+        // V14: Mais tempo de busca com Elitismo baixo
         resultados.add(executarExperimento("Variacao 14", "Pop:120, Gen:100, Tor:5, TM:30%, Elit:15%", 
             0.30f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemaAtual, numeroDeTestes, 100, 120));
 
-        // V15: Diversidade Extrema (Torneio relaxado, muita mutação)
+        // V15: Aumento da diversidade e pressão seletiva baixa
         resultados.add(executarExperimento("Variacao 15", "Pop:140, Gen:60, Tor:4, TM:35%, Elit:15%", 
             0.35f, new TournamentSelection(4), new PMXCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemaAtual, numeroDeTestes, 60, 140));
 
-        // V16: Balanceamento conservador
+        // V16: Balanceado
         resultados.add(executarExperimento("Variacao 16", "Pop:150, Gen:75, Tor:5, TM:20%, Elit:10%", 
             0.20f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemaAtual, numeroDeTestes, 75, 150));
 
-        // V17: Pressão Seletiva Altíssima
+        // V17: Pressão Seletiva Muito alta
         resultados.add(executarExperimento("Variacao 17", "Pop:120, Gen:60, Tor:7, TM:30%, Elit:15%", 
             0.30f, new TournamentSelection(7), new PMXCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemaAtual, numeroDeTestes, 60, 120));
@@ -139,12 +139,12 @@ public class Etapa2 {
             0.25f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemaAtual, numeroDeTestes, 60, 180));
 
-        // V19: Ultra Mutação
+        // V19: Alta taxa de mutação e população aumentada
         resultados.add(executarExperimento("Variacao 19", "Pop:150, Gen:60, Tor:5, TM:40%, Elit:20%", 
             0.40f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.20), 0.80f, 
             problemaAtual, numeroDeTestes, 60, 150));
 
-        // V20: A Grande Aposta (Super V10)
+        // V20: Mais população, gerações, taxa de mutação e elitismo baixo.
         resultados.add(executarExperimento("Variacao 20", "Pop:160, Gen:80, Tor:5, TM:25%, Elit:10%", 
             0.25f, new TournamentSelection(5), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemaAtual, numeroDeTestes, 80, 160));
