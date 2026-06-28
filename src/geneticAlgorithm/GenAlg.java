@@ -2,7 +2,6 @@ package geneticAlgorithm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -24,6 +23,7 @@ public class GenAlg {
   private ArrayList<Individual> population;
   private ArrayList<Individual> parents;
   private ArrayList<Individual> children;
+  private ArrayList<Integer> bestFitnessPerGeneration;
 
   public GenAlg(float p_mutation, int population_size, int maxGeneration, float crossoverRate,
       CrossoverStrategy crossoverStrategy, ParentSelectionStrategy parentSelectionStrategy,
@@ -36,6 +36,7 @@ public class GenAlg {
     this.population_size = population_size;
     this.maxGeneration = maxGeneration;
     this.crossoverRate = crossoverRate;
+    this.bestFitnessPerGeneration = new ArrayList<>(maxGeneration);
 
     this.generatePopulation();
   }
@@ -48,7 +49,6 @@ public class GenAlg {
         .collect(Collectors.toCollection(ArrayList::new));
   }
 
-  // TODO
   private void selectParent() {
 
     int numberOfParents = (int) (population_size * crossoverRate);
@@ -56,7 +56,6 @@ public class GenAlg {
     return;
   }
 
-  // TODO
   private void crossover() {
     this.children = IntStream.range(0, parents.size() / 2)
         .parallel()
@@ -87,16 +86,17 @@ public class GenAlg {
     return;
   }
 
-  // TODO
   public void executeAlgorithm() {
 
     int currentGenration = 0;
-
+    int bestFiteness = 1000;
     calculatePopulationFitness(population);
-    while (currentGenration < maxGeneration && getBestIndividual().getFitnessValue() > 0) {
+    while (currentGenration < maxGeneration && bestFiteness > 0) {
       selectParent();
       crossover();
       reeintegration();
+      bestFiteness = getBestIndividual().getFitnessValue();
+      bestFitnessPerGeneration.add(bestFiteness);
       currentGenration++;
     }
   }
@@ -119,5 +119,9 @@ public class GenAlg {
 
   public ArrayList<Individual> getChildren() {
     return children;
+  }
+
+  public ArrayList<Integer> getBestFitnessPerGeneration(){
+    return this.bestFitnessPerGeneration;
   }
 }
