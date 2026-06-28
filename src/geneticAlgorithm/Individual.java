@@ -27,7 +27,6 @@ public class Individual {
     this.mutationProbability = mutationProbability;
     this.possibleGeneValues = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.chromosome = chromosome;
-    this.mutate();
   }
 
   private void generateChromosome(){
@@ -54,7 +53,11 @@ public class Individual {
     this.fitnessValue = fitnessValue;
   }
 
-  private void mutate(){
+  public void setChromosome(int[] chromosome){
+    this.chromosome = chromosome;
+  }
+
+  public void mutate(float mutationProbability){
 
     boolean isMutate = mutationProbability >= ThreadLocalRandom.current().nextFloat(0, 1);
 

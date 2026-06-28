@@ -23,7 +23,7 @@ public class Etapa3Teste {
     LocalDateTime endTime;
     System.out.println("Iniciando sistema!");
 
-    CryptoProblem currenProblem = new CryptoProblem("DONALD", "GERALD", "ROBERT");
+    CryptoProblem currenProblem = new CryptoProblem("coca", "cola", "oasis");
 
     // CrossoverStrategy crossoverMethod = new PMXCrossover();
     // ParentSelectionStrategy selectionParentMethod = new TournamentSelection();
@@ -35,9 +35,10 @@ public class Etapa3Teste {
         80,
         0.5f,
         new PMXCrossover(),
-        new TournamentSelection(5),
-        new FitnessPositional(currenProblem),
-        new PureElitismReintegration(0.3));
+        new TournamentSelection(2),
+        new FitnessGlobal(currenProblem),
+        new PureElitismReintegration(0.5),
+        false);
 
     startTime = LocalDateTime.now();
     algoritmoGenetico.executeAlgorithm();
@@ -56,7 +57,7 @@ public class Etapa3Teste {
     // algoritmoGenetico.getChildren().forEach(individual->{
     // System.out.println(individual);
     // });
-    System.out.println(algoritmoGenetico.getBestFitnessPerGeneration());
+    System.out.println("melhor fitness por geração: " + algoritmoGenetico.getBestFitnessPerGeneration());
     System.out.println("Encerrando sistema!");
   }
 }
