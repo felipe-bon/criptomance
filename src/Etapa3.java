@@ -59,7 +59,7 @@ public class Etapa3 {
             0.35f, new TournamentSelection(7), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemas, numeroDeTestes, 50, 200, true));
 
-        // V2: Ajuste Fino Posicional (+Gerações)
+        // V2: Ajuste Posicional (+Gerações)
         resultados.add(executarExperimentoMultiplosProblemas("Variacao 02", "Pop:200, Gen:75, Tor:7 (POSICIONAL)", 
             0.35f, new TournamentSelection(7), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemas, numeroDeTestes, 75, 200, true));
@@ -80,9 +80,9 @@ public class Etapa3 {
             problemas, numeroDeTestes, 50, 250, false));
 
         // ==================================================================================================
-        // NOVAS VARIAÇÕES - BUSCANDO A "GENÉRICA SUPREMA" (Trocando operadores de base)
+        // NOVAS VARIAÇÕES - BUSCANDO A OCNFIGURAÇÃO MAIS GENÉRICA (Trocando operadores de base)
         // Como o PMX e o Torneio foram os melhores para 1 problema, eles podem ter "overfitado". 
-        // Vamos testar os outros operadores para ver se são mais genéricos!
+        // Testando os outros operadores para ver se são mais genéricos.
         // ==================================================================================================
 
         // V6: Posicional + Crossover Cíclico
@@ -105,17 +105,17 @@ public class Etapa3 {
             0.35f, new parentSelection.RouletteSelection(), new crossover.CyclicCrossover(), new Reintegration.SortededReintegration(), 0.90f, 
             problemas, numeroDeTestes, 50, 200, true));
 
-        // V10: Cíclico + Mutação Extrema (Para quebrar bloqueios)
+        // V10: Cíclico + Mutação Alta
         resultados.add(executarExperimentoMultiplosProblemas("Variacao 10", "Posicional + Cíclico + TM:50%", 
             0.50f, new TournamentSelection(3), new crossover.CyclicCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemas, numeroDeTestes, 50, 200, true));
 
-        // V11: Retorno ao Global + Roleta
+        // V11: Fitness Global + Roleta
         resultados.add(executarExperimentoMultiplosProblemas("Variacao 11", "Global + Roleta + PMX", 
             0.35f, new parentSelection.RouletteSelection(), new PMXCrossover(), new PureElitismReintegration(0.10), 0.90f, 
             problemas, numeroDeTestes, 50, 200, false));
 
-        // V12: O Grande Teste Genérico (Pop e Torneio balanceados)
+        // V12: População e Torneio balanceados
         resultados.add(executarExperimentoMultiplosProblemas("Variacao 12", "Posicional + Pop:150, Tor:3, Cíclico", 
             0.35f, new TournamentSelection(3), new crossover.CyclicCrossover(), new PureElitismReintegration(0.15), 0.85f, 
             problemas, numeroDeTestes, 60, 150, true));
@@ -150,7 +150,6 @@ public class Etapa3 {
         long tempoTotalMsTotal = 0;
         
         for (CryptoProblem problemaAtual : problemas) {
-            int convergenciasDesteProblema = 0;
             
             for (int testeCorrente = 0; testeCorrente < numeroDeTestesPorProblema; testeCorrente++) {
                 LocalDateTime tempoInicio = LocalDateTime.now();
@@ -174,7 +173,6 @@ public class Etapa3 {
                 tempoTotalMsTotal += duracao.toMillis();
                 
                 if (algoritmoGenetico.getBestIndividual().getFitnessValue() == 0) {
-                    convergenciasDesteProblema++;
                     contagemConvergenciasTotal++;
                 }
             }

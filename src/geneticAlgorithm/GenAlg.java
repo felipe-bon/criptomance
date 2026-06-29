@@ -2,7 +2,6 @@ package geneticAlgorithm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -48,7 +47,6 @@ public class GenAlg {
         .collect(Collectors.toCollection(ArrayList::new));
   }
 
-  // TODO
   private void selectParent() {
 
     int numberOfParents = (int) (population_size * crossoverRate);
@@ -56,7 +54,6 @@ public class GenAlg {
     return;
   }
 
-  // TODO
   private void crossover() {
     this.children = IntStream.range(0, parents.size() / 2)
         .parallel()
@@ -87,7 +84,6 @@ public class GenAlg {
     return;
   }
 
-  // TODO
   public void executeAlgorithm() {
 
     int currentGenration = 0;
@@ -111,6 +107,24 @@ public class GenAlg {
             i1.getFitnessValue(),
             i2.getFitnessValue()))
         .orElse(null);
+  }
+
+  public String getResult() {
+    Individual individual = getBestIndividual();
+    String lettersSequence = getLettersSequenc();
+
+    String[] letras = lettersSequence.trim().split("\\s+");
+
+    StringBuilder resultado = new StringBuilder();
+
+    for (int i = 0; i < letras.length; i++) {
+      if (i > 0) {
+        resultado.append("; ");
+      }
+      resultado.append(letras[i]).append("=").append(individual.getChromosome()[i]);
+    }
+
+    return resultado.toString();
   }
 
   public String getLettersSequenc() {

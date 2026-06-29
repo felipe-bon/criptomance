@@ -27,6 +27,8 @@ public class Individual {
     this.mutationProbability = mutationProbability;
     this.possibleGeneValues = new ArrayList<>(List.of(0, 1, 2, 3, 4, 5, 6, 7, 8, 9));
     this.chromosome = chromosome;
+
+    // pode sofrer mutação sempre que gerado a partir de um crossover
     this.mutate();
   }
 

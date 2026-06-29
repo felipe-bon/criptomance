@@ -44,12 +44,11 @@ public class FitnessPosicional implements FitnessStrategy {
             carry = sum / 10;
 
             if (resultingDigit != digitR) {
-                // Positional error is the absolute difference between the expected and actual digit
                 error += Math.abs(resultingDigit - digitR);
             }
         }
         
-        // If there is still a carry but we have no more digits in result, that's an error
+        // Se tiver um 'vai 1', mas não tem mais digitos no resultado é um erro.
         if (carry > 0 && maxLength == r.length()) {
             error += carry; 
         }
